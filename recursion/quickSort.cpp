@@ -7,7 +7,7 @@ int partition(int a[], int start, int end)
   int pivot = a[end];
   for (; j < end; j++)
   {
-    if (a[i + 1] <= pivot)
+    if (a[j] <= pivot)
     {
       i++;
       swap(a[i], a[j]);
