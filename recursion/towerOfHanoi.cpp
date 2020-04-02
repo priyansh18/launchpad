@@ -9,7 +9,7 @@ void towerOfHanoi(int n, char src, char dest, char helper)
   //1.Move n-1 disk from source to helper
   towerOfHanoi(n - 1, src, helper, dest);
   //2.Move nth disk from source to destination
-  cout << "Move " << n << " disk from " << src << " to " << dest << endl;
+  cout << "Moving ring " << n << " from " << src << " to " << dest << endl;
   //3 .Move n-1 disk from helper destination
   towerOfHanoi(n - 1, helper, dest, src);
 }
