@@ -22,17 +22,23 @@ void spiralPrint(int a[][6], int m, int n)
     }
     endColumn--;
     //End Row
-    for (int i = endColumn; i >= startColumn; i--)
+    if (endRow > startRow)
     {
-      cout << a[endRow][i] << " ";
+      for (int i = endColumn; i >= startColumn; i--)
+      {
+        cout << a[endRow][i] << " ";
+      }
+      endRow--;
     }
-    endRow--;
     // First Column
-    for (int i = endRow; i >= startRow; i--)
+    if (endColumn > startColumn)
     {
-      cout << a[i][startColumn] << " ";
+      for (int i = endRow; i >= startRow; i--)
+      {
+        cout << a[i][startColumn] << " ";
+      }
+      startColumn++;
     }
-    startColumn++;
   }
 }
 int main()
