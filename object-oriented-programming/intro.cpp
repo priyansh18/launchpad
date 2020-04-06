@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 using namespace std;
 class Car
 {
@@ -8,7 +9,25 @@ private:
 public:
   int model_no;
   char name[20];
-
+  //Constructor
+  Car()
+  {
+    //It override the default constructor
+    cout << "making a car" << endl;
+  }
+  // constructor with parametre --parametrised constructor
+  Car(int p, int mn)
+  {
+    price = p;
+    model_no = mn;
+  }
+  // Copy constructor
+  Car(Car &X)
+  {
+    price = X.price;
+    model_no = X.model_no;
+    strcpy(name, X.name);
+  }
   void start()
   {
     cout << "Grrrrr......" << endl;
@@ -20,6 +39,13 @@ public:
   int getPrice()
   {
     return price;
+  }
+  void print()
+  {
+    // cout << name << endl;
+    cout << price << endl;
+    cout << model_no << endl;
+    cout << endl;
   }
 };
 int main()
@@ -38,5 +64,11 @@ int main()
   c.start();
   cout << c.name << endl;
   cout << c.getPrice() << endl;
+
+  Car e(100, 2001);
+  e.print();
+
+  Car f(e);
+  f.print();
   return 0;
 }
