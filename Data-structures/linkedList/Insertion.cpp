@@ -13,12 +13,6 @@ public:
   }
 };
 // Passing a pointer variable
-void insertionAtHead(node *&head, int data)
-{
-  node *n = new node(data);
-  n->next = head;
-  head = n;
-}
 int length(node *head)
 {
   int len = 0;
@@ -28,6 +22,12 @@ int length(node *head)
     len = len + 1;
   }
   return len;
+}
+void insertionAtHead(node *&head, int data)
+{
+  node *n = new node(data);
+  n->next = head;
+  head = n;
 }
 void insertionAtTail(node *&head, int data)
 {
@@ -69,7 +69,6 @@ void insertionAtMiddle(node *&head, int data, int p)
     temp->next = n;
   }
 }
-
 void print(node *head)
 {
   // node *temp = head;
