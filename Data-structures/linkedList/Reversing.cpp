@@ -62,6 +62,21 @@ void reverse(node *&head)
   }
   head = previous;
 }
+node *reverseRec(node *head)
+{
+  //Base case
+  if (head->next == NULL || head == NULL)
+  {
+    return head;
+  }
+  // Recursive case
+  node *smallhead = reverseRec(head->next);
+  //making head as current
+  node *c = head;
+  c->next->next = c;
+  c->next = NULL;
+  return smallhead;
+}
 void print(node *head)
 {
   while (head != NULL)
@@ -78,6 +93,9 @@ int main()
   print(head);
   cout << endl;
   reverse(head);
+  print(head);
+  cout << endl;
+  head = reverseRec(head);
   print(head);
   return 0;
 }
