@@ -30,16 +30,17 @@ void insertionAtTail(node *&head, int data)
   return;
 }
 
-void buildList(node *&head)
+void buildList(node *&head, int m)
 {
   int data;
-  cin >> data;
-  while (data != -1)
+  while (m > 0)
   {
-    insertionAtTail(head, data);
     cin >> data;
+    insertionAtTail(head, data);
+    m--;
   }
 }
+
 node *merge(node *a, node *b)
 {
   if (a == NULL)
@@ -68,7 +69,7 @@ void print(node *head)
 {
   while (head != NULL)
   {
-    cout << head->data << " -> ";
+    cout << head->data << " ";
     head = head->next;
   }
 }
@@ -77,8 +78,15 @@ int main()
 {
   node *head = NULL;
   node *head2 = NULL;
-  buildList(head);
-  buildList(head2);
+  int m, n, t;
+  cin >> t;
+  while (t--)
+  {
+    cin >> m;
+    buildList(head, m);
+    cin >> n;
+    buildList(head2, n);
+  }
   head = merge(head, head2);
   print(head);
   return 0;
