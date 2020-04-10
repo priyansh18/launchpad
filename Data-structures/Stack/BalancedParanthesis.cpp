@@ -25,15 +25,20 @@ bool balanceParanthesis(string str)
 
 int main()
 {
+  int T;
+  cin >> T;
   string s;
-  cin >> s;
-  if (balanceParanthesis(s))
+  while (T--)
   {
-    cout << "Balanced";
-  }
-  else
-  {
-    cout << "Unbalanced";
+    cin >> s;
+    if (balanceParanthesis(s))
+    {
+      cout << "Balanced";
+    }
+    else
+    {
+      cout << "Unbalanced";
+    }
   }
   return 0;
 }
