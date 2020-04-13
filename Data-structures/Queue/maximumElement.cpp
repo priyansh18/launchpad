@@ -7,7 +7,7 @@ void printMax(int *arr, int n, int k)
   int i;
   for (i = 0; i < k; i++)
   {
-    while (!q.empty() && arr[i] >= arr[q.back()])
+    while (!q.empty() && arr[i] > arr[q.back()])
     {
       q.pop_back();
     }
@@ -16,11 +16,11 @@ void printMax(int *arr, int n, int k)
   for (; i < n; i++)
   {
     cout << arr[q.front()] << " ";
-    while (!q.empty() && q.front() <= i - k)
+    while ((!q.empty()) && (q.front() <= i - k))
     {
       q.pop_front();
     }
-    while (!q.empty() && arr[i] <= arr[q.back()])
+    while ((!q.empty()) && (arr[i] >= arr[q.back()]))
     {
       q.pop_back();
     }
@@ -33,7 +33,7 @@ int main()
 {
   int n;
   cin >> n;
-  int *arr = new int[n];
+  int arr[10000];
   for (int i = 0; i < n; i++)
   {
     cin >> arr[i];
