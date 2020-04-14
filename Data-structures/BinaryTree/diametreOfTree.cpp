@@ -1,6 +1,5 @@
 #include <iostream>
 #include <bits/stdc++.h>
-
 using namespace std;
 class node
 {
@@ -16,6 +15,7 @@ public:
     right = NULL;
   }
 };
+
 node *buildTree()
 {
   int d;
@@ -52,6 +52,7 @@ int diameter(node *root)
   int op3 = diameter(root->right);
   return max(op1, max(op2, op3));
 }
+
 int main()
 {
   //complexity O(n^2)
