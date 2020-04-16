@@ -45,6 +45,25 @@ node *build()
   }
   return root;
 }
+bool search(node *root, int key)
+{
+  if (root == NULL)
+  {
+    return false;
+  }
+  if (root->data == key)
+  {
+    return true;
+  }
+  if (key <= root->data)
+  {
+    search(root->left, key);
+  }
+  else
+  {
+    search(root->right, key);
+  }
+}
 void bFS(node *root)
 {
   queue<node *> q;
@@ -83,6 +102,16 @@ int main()
 {
   node *root = build();
   bFS(root);
+  int s;
+  cin >> s;
+  if (search(root, s))
+  {
+    cout << "Present";
+  }
+  else
+  {
+    cout << "Not Present";
+  }
 
   return 0;
 }
