@@ -66,8 +66,8 @@ void rightViewUtil(node *root, int level, int *max_level)
 
   // Recur for right subtree first,
   // then left subtree
-  rightViewUtil(root->right, level + 1, max_level);
   rightViewUtil(root->left, level + 1, max_level);
+  rightViewUtil(root->right, level + 1, max_level);
 }
 
 // A wrapper over rightViewUtil()
