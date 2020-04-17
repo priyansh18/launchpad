@@ -1,4 +1,5 @@
-#include <iostream>
+
+#include <bits/stdc++.h>
 #include <queue>
 using namespace std;
 class node
@@ -15,6 +16,7 @@ public:
     right = NULL;
   }
 };
+// function to create a new node
 node *buildTreeLevelOrder()
 {
   queue<node *> q;
@@ -51,25 +53,60 @@ node *buildTreeLevelOrder()
   return root;
 }
 
-// A wrapper over rightViewUtil()
 void topView(node *root)
 {
-  node *temp1 = root;
-  while (temp1->left != NULL)
+  // Base case
+  if (root == NULL)
   {
-    temp1 = temp1->left;
+    return;
   }
-  cout << temp1->data;
-  node *temp2 = root;
-  while (temp2->right != NULL)
+
+  // Take a temporary node
+  node *temp = NULL;
+
+  // Queue to do BFS
+  queue<pair<node *, int>> q;
+
+  // map to store node at each vartical distance
+  map<int, int> mp;
+
+  q.push({root, 0});
+
+  // BFS
+  while (!q.empty())
   {
-    temp2 = temp2->right;
+
+    temp = q.front().first;
+    int d = q.front().second;
+    q.pop();
+
+    // If any node is not at that vertical distance
+    // just insert that node in map and print it
+    if (mp.find(d) == mp.end())
+    {
+      cout << temp->data << " ";
+      mp[d] = temp->data;
+    }
+
+    // Continue for left node
+    if (temp->left)
+    {
+      q.push({temp->left, d - 1});
+    }
+
+    // Continue for right node
+    if (temp->right)
+    {
+      q.push({temp->right, d + 1});
+    }
   }
-  cout << temp2->data;
 }
+
+// Driver Program to test above functions
 int main()
 {
   node *root = buildTreeLevelOrder();
+  cout << "Following are nodes in top view of Binary Tree\n";
   topView(root);
   return 0;
 }
