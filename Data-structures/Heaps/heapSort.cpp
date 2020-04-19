@@ -87,6 +87,7 @@ int main()
     cin >> x;
     heap.push_back(x);
   }
+  //time complexity O(nlogn)
   heapSort(heap);
   display(heap);
   return 0;
