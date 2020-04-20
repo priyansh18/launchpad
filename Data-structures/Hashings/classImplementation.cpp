@@ -75,6 +75,19 @@ public:
       return NULL;
     }
   }
+  int &operator[](string key)
+  {
+    int *f = search(key);
+    if (f == NULL)
+    {
+      // Insert key,value(garbage) in hashmap
+      int garbage;
+      insert(key, garbage);
+      f = search(key);
+    }
+    return *f;
+  }
+
   void print()
   {
     for (int i = 0; i < table_size; i++)
@@ -101,7 +114,6 @@ int main()
   price_menu.insert("Coke", 40);
 
   price_menu.print();
-
   int *price = price_menu.search("Noodles");
   if (price == NULL)
   {
@@ -109,8 +121,13 @@ int main()
   }
   else
   {
-    cout << "Price:" << *price;
+    cout << "Price:" << *price << endl;
+    ;
   }
+  price_menu["Dosa"] = 60;
+  price_menu["Dosa"] += 10;
+  cout << "Price of Dosa:";
+  cout << price_menu["Dosa"];
 
   return 0;
 }
