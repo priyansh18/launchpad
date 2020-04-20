@@ -41,6 +41,33 @@ class Hashtable
     }
     return index;
   }
+  void rehash()
+  {
+    Node **oldTable = table;
+    int oldTableSize = table_size;
+    table_size = 2 * table_size;
+    table = new Node *[table_size];
+    for (int i = 0; i < table_size; i++)
+    {
+      table[i] = NULL;
+    }
+    current_size = 0;
+
+    for (int i = 0; i < oldTableSize; i++)
+    {
+      Node *temp = oldTable[i];
+      while (temp != NULL)
+      {
+        insert(temp->key, temp->value);
+        temp = temp->next;
+      }
+      if (oldTable[i] != NULL)
+      {
+        delete oldTable[i];
+      }
+    }
+    delete[] oldTable;
+  }
 
 public:
   Hashtable(int ts = 7)
@@ -61,6 +88,13 @@ public:
     n->next = table[index];
     table[index] = n;
     current_size++;
+
+    //Rehash..
+    float load_factor = current_size / (1.0 * table_size);
+    if (load_factor > 0.7)
+    {
+      rehash();
+    }
   }
   void print()
   {
@@ -73,13 +107,12 @@ public:
         cout << temp->key << " ->";
         temp = temp->next;
       }
-      cout<<endl;
+      cout << endl;
     }
   }
 };
 
-int
-main()
+int main()
 {
   Hashtable price_menu;
   price_menu.insert("Burger", 120);
