@@ -1,10 +1,10 @@
 #include <iostream>
 #include <string>
-#include <map>
+#include <unordered_map>
 using namespace std;
 int main()
 {
-  map<string, int> m;
+  unordered_map<string, int> m;
   // 1.Insert
   m.insert(make_pair("Mango", 100));
 
