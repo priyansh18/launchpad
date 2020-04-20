@@ -62,6 +62,19 @@ public:
     table[index] = n;
     current_size++;
   }
+  int *search(string key)
+  {
+    int index = hashFunction(key);
+    Node *temp = table[index];
+    while (temp != NULL)
+    {
+      if (temp->key == key)
+      {
+        return &temp->value;
+      }
+      return NULL;
+    }
+  }
   void print()
   {
     for (int i = 0; i < table_size; i++)
@@ -73,13 +86,12 @@ public:
         cout << temp->key << " ->";
         temp = temp->next;
       }
-      cout<<endl;
+      cout << endl;
     }
   }
 };
 
-int
-main()
+int main()
 {
   Hashtable price_menu;
   price_menu.insert("Burger", 120);
@@ -89,6 +101,16 @@ main()
   price_menu.insert("Coke", 40);
 
   price_menu.print();
+
+  int *price = price_menu.search("Noodles");
+  if (price == NULL)
+  {
+    cout << "Price not found.";
+  }
+  else
+  {
+    cout << "Price:" << *price;
+  }
 
   return 0;
 }
