@@ -19,6 +19,7 @@ bool checkIfSubarrayWithSumZero(int a[], int n)
 
 int main()
 {
+  // time complexity = O(n)
   int n, a[100];
   cin >> n;
   for (int i = 0; i < n; i++)
