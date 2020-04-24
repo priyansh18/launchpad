@@ -18,24 +18,24 @@ int main()
     for (int i = 0; i < n; i++)
     {
       cin >> start >> end;
+      v.push_back(make_pair(start, end));
     }
-    v.push_back(make_pair(start, end));
-  }
-  //Sort based on finishing time
-  sort(v.begin(), v.end(), compare);
-  // start picking activities
-  int res = 1;
-  int finish = v[0].second;
-  //Iterate over remaining activities
-  for (int i = 1; i < n; i++)
-  {
-    if (v[i].first >= finish)
+    //Sort based on finishing time
+    sort(v.begin(), v.end(), compare);
+    // start picking activities
+    int res = 1;
+    int finish = v[0].second;
+    //Iterate over remaining activities
+    for (int i = 1; i < n; i++)
     {
-      finish = v[i].second;
-      res++;
+      if (v[i].first >= finish)
+      {
+        finish = v[i].second;
+        res++;
+      }
     }
+    cout << res << endl;
+    v.clear();
   }
-  cout << res << endl;
-  v.clear();
   return 0;
 }
