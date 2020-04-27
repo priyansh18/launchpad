@@ -23,6 +23,22 @@ int maxSum(int a[], int n)
   }
   return max_so_far;
 }
+int maxSumOptimised(int a[], int n)
+{
+  // space efficient without use of any other array
+  int current_sum = 0;
+  int max_so_far = 0;
+  for (int i = 0; i < n; i++)
+  {
+    current_sum += a[i];
+    if (current_sum < 0)
+    {
+      current_sum = 0;
+    }
+    max_so_far = max(current_sum, max_so_far);
+  }
+  return max_so_far;
+}
 
 int main()
 {
@@ -33,6 +49,7 @@ int main()
     cin >> a[i];
   }
   cout << maxSum(a, n) << endl;
+  cout << maxSumOptimised(a, n) << endl;
 
   return 0;
 }
