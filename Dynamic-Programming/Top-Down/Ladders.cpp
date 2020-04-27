@@ -23,6 +23,8 @@ int ladders(int n, int k, int dp[])
 
 int main()
 {
+  //time complexity O(nk)
+  //space complexity O(n)
   int n, k;
   cin >> n >> k;
   int dp[100] = {0};
